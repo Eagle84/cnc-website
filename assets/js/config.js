@@ -10,4 +10,6 @@ export const CONFIG = {
   // The Tebex storefront, used when there is no token, and for payment history.
   tebexStore: 'https://cnc-store.tebex.io',
   tebexPaymentHistory: 'https://checkout.tebex.io/payment-history',
+  // Release Notes languages offered on the site. Only English for now; add 'he', 'lt', 'ar' to show the language switch again.
+  noteLanguages: ['en'],
 };

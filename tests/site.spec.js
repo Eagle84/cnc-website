@@ -57,15 +57,29 @@ test('home shows the three newest updates without owner-only lines', async ({ pa
   await expect(page.locator('#latest')).not.toContainText('Server owners');
 });
 
-test('release notes switch language and turn right-to-left for Hebrew', async ({ page }) => {
-  await page.goto('/notes/');
+test('release notes are English only for now: no language switch, ?lang= ignored', async ({ page }) => {
+  await page.goto('/notes/?lang=he');
   await expect(page.locator('#notes .note').first()).toBeVisible();
+  await expect(page.locator('.lang-switch')).toBeHidden();
+  await expect(page.locator('#notes')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('#notes')).toHaveAttribute('dir', 'ltr');
+  await expect(page.locator('#notes')).not.toContainText('בעלי שרת');
+});
+
+test('release notes turn on a language switch with right-to-left Hebrew when configured', async ({ page }) => {
+  await page.route('**/assets/js/config.js', async (route) => {
+    const body = (await (await route.fetch()).text()).replace("noteLanguages: ['en']", "noteLanguages: ['en', 'he', 'lt', 'ar']");
+    route.fulfill({ body, contentType: 'text/javascript' });
+  });
+  await page.goto('/notes/');
   await page.getByRole('button', { name: 'עברית' }).click();
   await expect(page.locator('#notes')).toHaveAttribute('dir', 'rtl');
-  await expect(page.locator('#notes .note').first()).toBeVisible();
   await expect(page.locator('#notes')).not.toContainText('בעלי שרת');
-  await page.getByRole('button', { name: 'English' }).click();
-  await expect(page.locator('#notes')).toHaveAttribute('dir', 'ltr');
+});
+
+test('release notes never show owner-only text', async ({ page }) => {
+  await page.goto('/notes/');
+  await expect(page.locator('#notes .note').first()).toBeVisible();
   while (await page.locator('.load-more').count()) await page.locator('.load-more').click();
   await expect(page.locator('#notes')).not.toContainText(/server owners/i);
   await expect(page.locator('#notes')).not.toContainText('discord_setup.bat');

@@ -1,6 +1,7 @@
 // Release Notes page: one card per build, a language switch, right-to-left for Hebrew and Arabic.
 import { loadNotes, inline, plain } from './notes.js';
 import { esc } from './site.js';
+import { CONFIG } from './config.js';
 
 const RTL = new Set(['he', 'ar']);
 const PAGE = 8;
@@ -51,8 +52,13 @@ toc.addEventListener('click', (e) => {
   const id = a.getAttribute('href').slice(1);
   if (!document.getElementById(id)) { e.preventDefault(); while (!document.getElementById(id) && shown < entries.length) more(); document.getElementById(id)?.scrollIntoView(); }
 });
-document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => show(b.dataset.lang)));
+const offered = CONFIG.noteLanguages?.length ? CONFIG.noteLanguages : ['en'];
+document.querySelectorAll('[data-lang]').forEach((b) => {
+  b.hidden = !offered.includes(b.dataset.lang);
+  b.addEventListener('click', () => show(b.dataset.lang));
+});
+document.querySelector('.lang-switch').hidden = offered.length < 2;
 
 let lang = new URLSearchParams(location.search).get('lang');
 try { lang ||= localStorage.getItem('cnc-notes-lang'); } catch { /* default */ }
-show(['en', 'he', 'lt', 'ar'].includes(lang) ? lang : 'en');
+show(offered.includes(lang) ? lang : offered[0]);
