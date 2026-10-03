@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, withConfig } from './fixtures.js';
 
 const PAGES = ['/', '/store/', '/rules/', '/notes/', '/legal/', '/store/thanks.html'];
 
@@ -32,10 +32,7 @@ test('Play without a join code explains how to join instead of a dead link', asy
 });
 
 test('Play with a join code opens FiveM on a PC and explains on a phone', async ({ page }, info) => {
-  await page.route('**/assets/js/config.js', async (route) => {
-    const body = (await (await route.fetch()).text()).replace("joinCode: ''", "joinCode: 'abc123'");
-    route.fulfill({ body, contentType: 'text/javascript' });
-  });
+  await withConfig(page, { joinCode: 'abc123', playerCount: true });
   await page.route('https://servers-frontend.fivem.net/**', (route) => route.fulfill({ json: { Data: { clients: 21, sv_maxclients: 36 } } }));
   await page.goto('/');
   const play = page.locator('.hero [data-play]');
@@ -67,10 +64,7 @@ test('release notes are English only for now: no language switch, ?lang= ignored
 });
 
 test('release notes turn on a language switch with right-to-left Hebrew when configured', async ({ page }) => {
-  await page.route('**/assets/js/config.js', async (route) => {
-    const body = (await (await route.fetch()).text()).replace("noteLanguages: ['en']", "noteLanguages: ['en', 'he', 'lt', 'ar']");
-    route.fulfill({ body, contentType: 'text/javascript' });
-  });
+  await withConfig(page, { noteLanguages: ['en', 'he', 'lt', 'ar'] });
   await page.goto('/notes/');
   await page.getByRole('button', { name: 'עברית' }).click();
   await expect(page.locator('#notes')).toHaveAttribute('dir', 'rtl');
@@ -83,6 +77,18 @@ test('release notes never show owner-only text', async ({ page }) => {
   while (await page.locator('.load-more').count()) await page.locator('.load-more').click();
   await expect(page.locator('#notes')).not.toContainText(/server owners/i);
   await expect(page.locator('#notes')).not.toContainText('discord_setup.bat');
+});
+
+test('the real config joins vqqxjrx and links the Discord', async ({ page }, info) => {
+  await page.unroute('**/assets/js/config.js');
+  await page.goto('/');
+  await expect(page.locator('.hero [data-discord]')).toHaveAttribute('href', 'https://discord.gg/4hAmtXET8');
+  await expect(page.locator('#status')).toBeHidden();
+  if (info.project.name === 'desktop') {
+    const play = page.locator('.hero [data-play]');
+    await play.dispatchEvent('click');
+    await expect(play).toHaveAttribute('href', 'fivem://connect/cfx.re/join/vqqxjrx');
+  }
 });
 
 test('release notes link straight to a build', async ({ page }) => {

@@ -9,9 +9,11 @@ Everything you may want to change is in [`assets/js/config.js`](assets/js/config
 
 | Setting | What |
 |---|---|
-| `joinCode` | The server's `cfx.re/join` code. Play opens FiveM and joins; the header shows the live player count. Empty: Play explains how to join. |
+| `joinCode` | The server's `cfx.re/join` code. Play opens FiveM and joins. Empty: Play explains how to join. |
+| `playerCount` | Live player count in the header. Off: the Cfx.re server list refuses calls from other sites (CORS), so it needs a small proxy first. |
 | `discord` | The Discord invite. |
 | `supportEmail` | Shown on the legal and thanks pages. |
+| `noteLanguages` | Release Notes languages. `['en']` hides the switch; add `'he'`, `'lt'`, `'ar'` to show it. |
 | `tebexToken` | The Tebex Headless **public** token. Empty: the store shows [`store/catalog.json`](store/catalog.json) and checkout opens `tebexStore`. |
 | `tebexStore`, `tebexPaymentHistory` | The Tebex store and the buyers' payment history page. |
 

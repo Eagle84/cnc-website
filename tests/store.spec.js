@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, withConfig } from './fixtures.js';
 
 test.describe('store without a Tebex token (catalog.json)', () => {
   test('lists the three VIP tiers with prices, Silver highlighted', async ({ page }) => {
@@ -47,10 +47,7 @@ test.describe('store without a Tebex token (catalog.json)', () => {
 
 test('checkout with Tebex: basket, then Cfx.re login, then packages, then payment', async ({ page }) => {
   const calls = [];
-  await page.route('**/assets/js/config.js', async (route) => {
-    const body = (await (await route.fetch()).text()).replace("tebexToken: ''", "tebexToken: 'tok'");
-    route.fulfill({ body, contentType: 'text/javascript' });
-  });
+  await withConfig(page, { tebexToken: 'tok' });
   await page.route('https://headless.tebex.io/**', async (route) => {
     const req = route.request();
     const url = new URL(req.url());
@@ -93,10 +90,7 @@ test('checkout with Tebex: basket, then Cfx.re login, then packages, then paymen
 });
 
 test('a checkout that fails says so and keeps the cart', async ({ page }) => {
-  await page.route('**/assets/js/config.js', async (route) => {
-    const body = (await (await route.fetch()).text()).replace("tebexToken: ''", "tebexToken: 'tok'");
-    route.fulfill({ body, contentType: 'text/javascript' });
-  });
+  await withConfig(page, { tebexToken: 'tok' });
   await page.route('https://headless.tebex.io/**', (route) => {
     if (route.request().url().includes('/categories')) {
       return route.fulfill({ json: { data: [{ id: 1, name: 'VIP', packages: [{ id: 5, name: 'VIP Bronze', total_price: 4.99, currency: 'USD', type: 'subscription' }] }] } });
@@ -108,4 +102,18 @@ test('a checkout that fails says so and keeps the cart', async ({ page }) => {
   await page.getByRole('button', { name: 'Checkout securely' }).click();
   await expect(page.locator('#checkout-msg')).toContainText('Tebex is down');
   await expect(page.locator('#cart-count')).toHaveText('1');
+});
+
+test('live-shaped Tebex catalogue: ?cat=vip finds "VIP Membership", Silver featured, ?item= by package id', async ({ page }) => {
+  await withConfig(page, { tebexToken: 'tok' });
+  await page.route('https://headless.tebex.io/**', (route) => route.fulfill({ json: { data: [{ id: 1, name: 'VIP Membership', slug: null, packages: [
+    { id: 7713971, name: 'VIP Bronze', total_price: 4.99, currency: 'USD', type: 'subscription', image: null, description: '<p>Bronze</p>' },
+    { id: 7713966, name: 'VIP Silver', total_price: 9.99, currency: 'USD', type: 'subscription', image: null, description: '<p>Silver</p>' },
+    { id: 7713973, name: 'VIP Gold', total_price: 19.99, currency: 'USD', type: 'subscription', image: null, description: '<p>Gold</p>' },
+  ] }] } }));
+  await page.goto('/store/?cat=vip');
+  await expect(page.getByRole('tab', { name: 'VIP Membership' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('.product.featured')).toContainText('VIP Silver');
+  await page.goto('/store/?item=7713973');
+  await expect(page.locator('#item-dlg')).toContainText('VIP Gold');
 });

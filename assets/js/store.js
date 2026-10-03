@@ -232,7 +232,8 @@ try {
   const params = new URLSearchParams(location.search);
   const item = params.get('item');
   const owner = item && categories.find((c) => c.packages.some((p) => p.id === item));
-  const want = owner?.slug || params.get('cat');
+  const asked = params.get('cat');
+  const want = owner?.slug || (asked && (categories.find((c) => c.slug === asked) || categories.find((c) => c.slug.startsWith(asked)))?.slug) || asked;
   show(categories.some((c) => c.slug === want) || want === 'all' ? want : categories[0]?.slug || 'all');
   renderCart();
   if (owner) openItem(item);

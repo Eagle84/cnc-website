@@ -123,7 +123,7 @@ function playModal() {
 }
 
 async function liveStatus() {
-  if (!CONFIG.joinCode) return;
+  if (!CONFIG.joinCode || !CONFIG.playerCount) return;
   const el = document.getElementById('status');
   try {
     const res = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${CONFIG.joinCode}`, { headers: { Accept: 'application/json' } });
