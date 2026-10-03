@@ -1,0 +1,13 @@
+{
+  "name": "cnc-website",
+  "private": true,
+  "type": "module",
+  "description": "The CnC (Cops & Criminals) FiveM server website: static pages for GitHub Pages.",
+  "scripts": {
+    "serve": "node tests/serve.js 8765",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

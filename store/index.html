@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-root="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store — CnC | Cops &amp; Criminals</title>
+  <meta name="description" content="Support CnC: VIP memberships, cosmetics and perks. Secure checkout by Tebex, delivered in game.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://headless.tebex.io https://servers-frontend.fivem.net; frame-src 'none'; object-src 'none'; base-uri 'self'">
+  <meta name="theme-color" content="#07060f">
+  <link rel="icon" href="../assets/img/cnc-icon-512.png">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="module" src="../assets/js/site.js"></script>
+  <script type="module" src="../assets/js/store.js"></script>
+</head>
+<body data-page="store">
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="store-bar" style="margin:0;align-items:flex-end">
+        <div>
+          <div class="eyebrow">Store</div>
+          <h1>Support the <span class="grad-text">city</span>.</h1>
+          <p>VIP memberships, cosmetics and perks. Every purchase keeps the server running &mdash; no in-game money, no pay-to-win.</p>
+        </div>
+        <button class="btn cart-btn" id="cart-open" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>
+          Cart <span class="cart-count" id="cart-count" hidden>0</span>
+        </button>
+      </div>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>Secure checkout by Tebex</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>In game in about a minute</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>Cancel VIP anytime</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>No in-game currency sold</span>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding-top:40px">
+    <div class="wrap">
+      <div class="callout" id="checkout-msg" hidden></div>
+      <div class="store-bar"><div class="tabs" role="tablist" aria-label="Categories" id="tabs"></div></div>
+      <div class="products" id="products" aria-live="polite">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal"><div class="eyebrow">How it works</div><h2>Bought it? Here's what happens.</h2></div>
+      <div class="grid grid-3 steps">
+        <article class="card step reveal"><h3>Log in with Cfx.re</h3><p>At checkout Tebex asks for your Cfx.re account &mdash; the same one you play FiveM with. That's how the server knows it's yours.</p></article>
+        <article class="card step reveal"><h3>It reaches the city</h3><p>Within about a minute the purchase lands on the server, even if you're offline.</p></article>
+        <article class="card step reveal"><h3>Claim with F5</h3><p>In game press <b style="color:#fff">F5 → My purchases</b> and give it to the character you're playing.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal"><div class="eyebrow">Purchase history</div><h2>Everything you've bought.</h2></div>
+      <div class="history">
+        <article class="card reveal">
+          <h3>In game</h3>
+          <p style="color:var(--muted)">Press <b style="color:#fff">F5 → My purchases</b>: every purchase with its date, what's ready to claim, which character got it, and how long your VIP runs.</p>
+          <a class="btn" data-play href="#">Open the game</a>
+        </article>
+        <article class="card reveal">
+          <h3>Receipts &amp; subscriptions</h3>
+          <p style="color:var(--muted)">Tebex keeps your receipts and lets you cancel or change a VIP subscription at any time.</p>
+          <a class="btn" id="tebex-history" href="#" target="_blank" rel="noopener">Tebex payment history ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <dialog id="item-dlg" aria-labelledby="item-title"></dialog>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="cart" aria-label="Cart" aria-hidden="true">
+    <header><h2>Your cart</h2><button class="icon-btn" id="cart-close" aria-label="Close cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+    <div class="lines" id="cart-lines"></div>
+    <footer>
+      <div class="total"><span>Total</span><span id="cart-total">$0.00</span></div>
+      <button class="btn btn-play btn-block" id="checkout">Checkout securely</button>
+      <p class="fine">You'll log in with your Cfx.re account, then pay on Tebex. Prices include tax where it applies.</p>
+    </footer>
+  </aside>
+</main>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-root=".">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CnC — Cops &amp; Criminals | FiveM server</title>
+  <meta name="description" content="Cops & Criminals: a FiveM city where half the town is running and the other half is chasing. Police, gangs, heists, hackers and the Dark Web. Press Play and pick a side.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://headless.tebex.io https://servers-frontend.fivem.net; frame-src 'none'; object-src 'none'; base-uri 'self'">
+  <meta property="og:title" content="CnC — Cops & Criminals">
+  <meta property="og:description" content="Half the city is running. The other half is chasing. Pick your side.">
+  <meta property="og:image" content="assets/img/cnc-store-banner.png">
+  <meta name="theme-color" content="#07060f">
+  <link rel="icon" href="assets/img/cnc-icon-512.png">
+  <link rel="preload" href="assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="module" src="assets/js/site.js"></script>
+  <script type="module" src="assets/js/home.js"></script>
+</head>
+<body data-page="home">
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="The CnC shield over the Los Santos skyline at night"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="eyebrow">FiveM · Los Santos</div>
+        <h1><span class="cop">Cops.</span> <span class="crim">Criminals.</span> <span>Your City.</span></h1>
+        <p class="lead">Half the city is running. The other half is chasing. Rob a store with your crew, work the Dark Web, climb the gangs &mdash; or pin on a badge and hunt them all down.</p>
+        <div class="cta-row">
+          <a class="btn btn-play btn-lg" data-play href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>PLAY NOW</a>
+          <a class="btn btn-discord btn-lg" data-discord href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1A19.9 19.9 0 0 0 6.1 21l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.6zM8 15.4c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.6 8 10.6s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4z"/></svg>Join Discord</a>
+        </div>
+        <p class="hero-note">Free to play with GTA V on PC. New here? <a href="#join">Join in 3 steps</a>.</p>
+        <div class="stats">
+          <div class="stat"><b class="cop">5</b><span>gangs to rise with</span></div>
+          <div class="stat"><b class="crim">6</b><span>underworld careers</span></div>
+          <div class="stat"><b>15+</b><span>legal jobs</span></div>
+          <div class="stat"><b class="grad-text">4</b><span>languages</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sides">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow">Pick a side</div>
+        <h2>Your job is your side. Swap whenever you like.</h2>
+        <p>Every side has its own work, its own map and its own way up. Your city level unlocks more of each.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card side police reveal">
+          <div class="side-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M12 8l1.2 2.5 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z"/></svg></div>
+          <h3 class="cop">Police</h3>
+          <p>Answer the city's calls, stop the getaway, make the arrest.</p>
+          <ul class="ticks">
+            <li>Arrests, tickets and the MDT</li>
+            <li>City cameras, GPS trackers and K9</li>
+            <li>Roadblocks, raids and the helicopter</li>
+            <li>Prisoner transfers and checkpoints</li>
+          </ul>
+          <a class="btn btn-police" data-play href="#">Wear the badge</a>
+        </article>
+        <article class="card side criminal reveal">
+          <div class="side-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="7"/><path d="M9 21v-3m6 3v-3M9 10h.01M15 10h.01M10 14h4"/></svg></div>
+          <h3 class="crim">Criminal</h3>
+          <p>Stack dirty money, keep your stars low, and never sell to a uniform.</p>
+          <ul class="ticks">
+            <li>Store hold-ups, ATM hacks and the Union Depository</li>
+            <li>The drug trade, from the field to the corner</li>
+            <li>Dark Web contracts and Cayo Perico runs</li>
+            <li>Five gangs who remember what you did</li>
+          </ul>
+          <a class="btn btn-crime" data-play href="#">Start running</a>
+        </article>
+        <article class="card side civil reveal">
+          <div class="side-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+          <h3 style="color:#b49bff">Honest work</h3>
+          <p>Legal money, real careers &mdash; and a front-row seat to the chaos.</p>
+          <ul class="ticks">
+            <li>EMS, taxi, mechanic, tow, trucking and more</li>
+            <li>Bounty Hunter, Street Doc, the Hacker</li>
+            <li>Contracts board that changes every restart</li>
+            <li>Diving, hunting and the Mud Club</li>
+          </ul>
+          <a class="btn" data-play href="#">Clock in</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="card story reveal" style="padding:clamp(28px,5vw,52px)">
+        <div>
+          <div class="eyebrow">Your first night</div>
+          <blockquote class="quote">&ldquo;Half the city is running, and the other half is chasing. Let me show you around before you pick which half you're in.&rdquo;</blockquote>
+          <p class="quote-by">&mdash; Lena Ortiz, night-shift dispatcher, Downtown Cab Co.</p>
+        </div>
+        <div>
+          <p style="color:var(--muted)">You step off the bus with a bag, a phone and not much else. Lena's eight-chapter city tour shows you the jobs, the street, the heat and the five gangs &mdash; and pays you <b style="color:#fff">$2,500</b> and <b style="color:#fff">150 XP</b> to finish it.</p>
+          <ul class="ticks" style="margin:0">
+            <li>No wall of rules to read before you play</li>
+            <li>Every step tells you exactly what to do</li>
+            <li>Skip or restart any time with <code style="background:var(--surface-2);padding:2px 6px;border-radius:6px">/tutorial</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">What's in the city</div>
+        <h2>More than a chase.</h2>
+      </div>
+      <div class="grid grid-4">
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-7L2 9.3l7-.8z"/></svg></div><h3>Heat &amp; wanted stars</h3><p>Seen crimes earn stars. Four or more and you're on Breaking News with a price on your head.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Five gangs</h3><p>Families, Ballas, Vagos, Marabunta, the Lost. Earn Family status for backup and a gang car.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 2-3 2M13 13h4"/></svg></div><h3>The Hacker</h3><p>Ten hard levels. Black hat skims ATMs and blinds cameras; white hat patches the city for clean pay.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>The Dark Web</h3><p>Anonymous contracts on other players. Finish them for skill points: suppressors, grapple lines and more.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Heists</h3><p>The Union Depository, the armored truck, the prison wall. Get the kit, bring the crew, beat the clock.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div><h3>Syndicate duos</h3><p>Link up with a friend: shared stash, shared skill tree, shared heat, and heists built for two.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M12 3v5"/></svg></div><h3>Off the grid</h3><p>Dive wrecks at the marina, hunt the swamp, race the Mud Club &mdash; or smuggle a crate past the coast guard.</p></article>
+        <article class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v18M6 4h11l-2 4 2 4H6"/></svg></div><h3>Modes</h3><p>Deathmatch, Gun Game and Street Races when you just want to fight or drive.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow">Join in 3 steps</div>
+        <h2>From the desktop to the streets.</h2>
+      </div>
+      <div class="grid grid-3 steps">
+        <article class="card step reveal"><h3>Get FiveM</h3><p>Own GTA V on PC, then install <a href="https://fivem.net" target="_blank" rel="noopener">FiveM</a> and sign in with your Cfx.re account.</p></article>
+        <article class="card step reveal"><h3>Press Play</h3><p>The <b style="color:#fff">Play</b> button on this site opens FiveM and connects you. Or search <b style="color:#fff">CnC</b> in the server list.</p></article>
+        <article class="card step reveal"><h3>Meet Lena</h3><p>Your cab is waiting. Take the tour, pick a side, and make your first dollar &mdash; honest or not.</p></article>
+      </div>
+      <div class="center" style="margin-top:32px"><a class="btn btn-play btn-lg" data-play href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>PLAY NOW</a></div>
+    </div>
+  </section>
+
+  <section id="updates" style="padding-top:0">
+    <div class="wrap">
+      <div class="store-bar reveal">
+        <div class="section-head" style="margin:0"><div class="eyebrow">Latest updates</div><h2>The city keeps changing.</h2></div>
+        <a class="btn" href="notes/">All release notes</a>
+      </div>
+      <div class="grid grid-3" id="latest">
+        <div class="skeleton" style="min-height:240px"></div><div class="skeleton" style="min-height:240px"></div><div class="skeleton" style="min-height:240px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vip" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow">Support the city</div>
+        <h2>Go <span class="grad-text">VIP</span>.</h2>
+        <p>Keep the lights on and get a little extra. Cosmetic and convenience perks only &mdash; no money, no pay-to-win.</p>
+      </div>
+      <div class="tiers">
+        <article class="card tier bronze reveal">
+          <div class="name">BRONZE</div><div class="price">$4.99</div><div class="per">per month</div>
+          <ul class="ticks"><li>Bronze VIP tag in chat</li><li>VIP badge on the player list</li><li>Priority support on Discord</li></ul>
+          <a class="btn btn-block" href="store/?cat=vip">Choose Bronze</a>
+        </article>
+        <article class="card tier silver featured reveal">
+          <span class="ribbon">MOST POPULAR</span>
+          <div class="name">SILVER</div><div class="price">$9.99</div><div class="per">per month</div>
+          <ul class="ticks"><li>Everything in Bronze</li><li>A custom plate change every month</li><li>Monthly VIP outfit</li></ul>
+          <a class="btn btn-play btn-block" href="store/?cat=vip">Choose Silver</a>
+        </article>
+        <article class="card tier gold reveal">
+          <div class="name">GOLD</div><div class="price">$19.99</div><div class="per">per month</div>
+          <ul class="ticks"><li>Everything in Silver</li><li>Reserved slot when the server is full</li><li>Exclusive Gold cosmetic</li></ul>
+          <a class="btn btn-block" href="store/?cat=vip">Choose Gold</a>
+        </article>
+      </div>
+      <p class="center fine" style="margin-top:24px">Cancel anytime. Secure checkout by Tebex. Claim in game with F5.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="band reveal">
+        <div><h2>The city talks on Discord.</h2><p>Crew up for heists, catch the patch notes first, report a bug, or just watch the chases unfold.</p></div>
+        <a class="btn btn-discord btn-lg" data-discord href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1A19.9 19.9 0 0 0 6.1 21l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.6zM8 15.4c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.6 8 10.6s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4z"/></svg>Join the Discord</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

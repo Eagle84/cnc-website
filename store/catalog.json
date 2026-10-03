@@ -1,0 +1,26 @@
+{
+  "note": "Shown when assets/js/config.js has no tebexToken. With a token the store reads Tebex directly and this file is not used.",
+  "categories": [
+    {
+      "slug": "vip",
+      "name": "VIP Membership",
+      "packages": [
+        {
+          "id": "vip-bronze", "name": "VIP Bronze", "price": 4.99, "currency": "USD", "type": "subscription",
+          "image": "../assets/img/cnc-vip-bronze.png",
+          "description": "<p>Your monthly CnC membership:</p><ul><li>Bronze VIP tag in chat</li><li>VIP badge on the player list</li><li>Priority support on Discord</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+        },
+        {
+          "id": "vip-silver", "name": "VIP Silver", "price": 9.99, "currency": "USD", "type": "subscription", "badge": "MOST POPULAR",
+          "image": "../assets/img/cnc-vip-silver.png",
+          "description": "<p>Most popular. Your monthly CnC membership:</p><ul><li>Everything in Bronze</li><li>A custom plate change every month</li><li>Monthly VIP outfit</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+        },
+        {
+          "id": "vip-gold", "name": "VIP Gold", "price": 19.99, "currency": "USD", "type": "subscription",
+          "image": "../assets/img/cnc-vip-gold.png",
+          "description": "<p>The full CnC experience:</p><ul><li>Everything in Silver</li><li>Reserved slot when the server is full</li><li>Exclusive Gold cosmetic</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+        }
+      ]
+    }
+  ]
+}
