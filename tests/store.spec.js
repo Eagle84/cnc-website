@@ -14,7 +14,8 @@ test.describe('store without a Tebex token (catalog.json)', () => {
   test('?item= opens that item (the link the F5 Buy button opens)', async ({ page }) => {
     await page.goto('/store/?item=vip-gold');
     await expect(page.getByRole('dialog')).toContainText('VIP Gold');
-    await expect(page.getByRole('dialog')).toContainText('Reserved slot');
+    await expect(page.getByRole('dialog')).toContainText('First in the queue when the server is full');
+    await expect(page.getByRole('dialog')).toContainText('$300,000 bank money every month');
   });
 
   test('the cart keeps items across a reload and a subscription only once', async ({ page }) => {

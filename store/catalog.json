@@ -8,17 +8,17 @@
         {
           "id": "vip-bronze", "name": "VIP Bronze", "price": 4.99, "currency": "USD", "type": "subscription",
           "image": "../assets/img/cnc-vip-bronze.png",
-          "description": "<p>Your monthly CnC membership:</p><ul><li>Bronze VIP tag in chat</li><li>VIP badge on the player list</li><li>Priority support on Discord</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+          "description": "<p>Your monthly CnC membership:</p><ul><li>$50,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Bronze VIP tag in chat and on the player list</li><li>VIP Bronze role on our Discord</li><li>Ahead of players without VIP in the queue when the server is full</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
         },
         {
           "id": "vip-silver", "name": "VIP Silver", "price": 9.99, "currency": "USD", "type": "subscription", "badge": "MOST POPULAR",
           "image": "../assets/img/cnc-vip-silver.png",
-          "description": "<p>Most popular. Your monthly CnC membership:</p><ul><li>Everything in Bronze</li><li>A custom plate change every month</li><li>Monthly VIP outfit</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+          "description": "<p>Most popular. Your monthly CnC membership:</p><ul><li>$125,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Silver VIP tag in chat and on the player list</li><li>VIP Silver role on our Discord</li><li>Ahead of Bronze and players without VIP in the queue</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
         },
         {
           "id": "vip-gold", "name": "VIP Gold", "price": 19.99, "currency": "USD", "type": "subscription",
           "image": "../assets/img/cnc-vip-gold.png",
-          "description": "<p>The full CnC experience:</p><ul><li>Everything in Silver</li><li>Reserved slot when the server is full</li><li>Exclusive Gold cosmetic</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+          "description": "<p>The full CnC experience:</p><ul><li>$300,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Gold VIP tag in chat and on the player list</li><li>VIP Gold role on our Discord</li><li>First in the queue when the server is full</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
         }
       ]
     }
