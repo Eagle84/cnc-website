@@ -2,6 +2,10 @@
 
 Short and simple. The newest news is first. (Build numbers are in brackets.)
 
+## 🧾 Every store purchase in Discord (85)
+- **A log of the store for staff.** Every purchase, renewal, CnCoins spend and refund is a card in the new staff channel **#log-store**: who bought (their Cfx.re name, and the character when they are online), what, for how much, when, and the Tebex transaction. A missing purchase is quick to track down.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart, or `ensure cy-discord` and `ensure cy-store` in the console. Run `scripts\discord_setup.bat` again to create #log-store (or set `cy_discord_ch_store` in discord.cfg). In the Tebex panel add `{username}` to the end of the purchase and renewal commands: `cy_store_grant {id} {transaction} {packageId} {purchaseQuantity} {username}` and `cy_store_renew {id} {transaction} {packageId} {username}`.
+
 ## 🧍 You can see your character, the Z bar is gone, and the cab is on the road (84)
 - **You can see your character now.** The character select was painted over the whole screen, so the character the game puts there was hidden. The cards are in a column on the left, the picked character's file on the right, and the middle of the screen is the game's own: your character stands there. The new-character form and the loading screen look as before. ↑ ↓ (or ← →) choose, Enter plays.
 - **No more five-slot bar on Z.** Holding Z no longer draws the five slots at the bottom of the screen. The inventory itself and its number keys work as before.

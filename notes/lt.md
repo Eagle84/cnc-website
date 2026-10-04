@@ -2,6 +2,10 @@
 
 Trumpai ir paprastai. Naujausios naujienos – viršuje. (Versijų numeriai – skliaustuose.)
 
+## 🧾 Kiekvienas parduotuvės pirkinys Discord kanale (85)
+- **Parduotuvės žurnalas personalui.** Kiekvienas pirkinys, atnaujinimas, CnCoins išleidimas ir grąžinimas – kortelė naujame personalo kanale **#log-store**: kas pirko (Cfx.re vardas, o kai prisijungęs – ir veikėjas), ką, už kiek, kada ir Tebex sandorio numeris. Dingusį pirkinį lengva surasti.
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada paleiskite iš naujo arba konsolėje `ensure cy-discord` ir `ensure cy-store`. Dar kartą paleiskite `scripts\discord_setup.bat`, kad būtų sukurtas #log-store (arba nustatykite `cy_discord_ch_store` faile discord.cfg). Tebex skydelyje pirkimo ir atnaujinimo komandų gale pridėkite `{username}`: `cy_store_grant {id} {transaction} {packageId} {purchaseQuantity} {username}` ir `cy_store_renew {id} {transaction} {packageId} {username}`.
+
 ## 🧍 Matote savo veikėją, Z juostos nebėra, o taksi stovi kelyje (84)
 - **Dabar matote savo veikėją.** Veikėjo pasirinkimo langas buvo nupieštas per visą ekraną, todėl veikėjo, kurį žaidimas ten pastato, nesimatė. Kortelės dabar stulpelyje kairėje, pasirinkto veikėjo byla – dešinėje, o ekrano vidurys paliktas pačiam žaidimui: ten stovi jūsų veikėjas. Naujo veikėjo forma ir įkėlimo ekranas atrodo kaip anksčiau. ↑ ↓ (arba ← →) renkatės, Enter žaidžia.
 - **Penkių langelių juostos ant Z nebėra.** Laikant Z jau nebepiešiami penki langeliai ekrano apačioje. Pats inventorius ir jo skaičių klavišai veikia kaip anksčiau.
