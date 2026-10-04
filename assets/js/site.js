@@ -1,5 +1,6 @@
 // CnC website: header, footer, the Play button, live player count, small helpers shared by every page.
 import { CONFIG } from './config.js';
+import { canSignIn, session, signIn, signOut, finishSignIn } from './account.js';
 
 const root = document.documentElement.dataset.root || '.';
 const page = document.body.dataset.page;
@@ -12,6 +13,7 @@ export const ICONS = {
   cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>',
   shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>',
   bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>',
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
   refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>',
 };
 
@@ -38,6 +40,7 @@ function header() {
       </nav>
       <div class="header-right">
         <span class="status" id="status" hidden><span class="dot"></span><span><b id="status-n">0</b> online</span></span>
+        <div class="account" id="account"></div>
         <a class="btn btn-play" data-play href="#">${ICONS.play}PLAY</a>
         <button class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">${ICONS.menu}</button>
       </div>
@@ -53,6 +56,77 @@ function header() {
     btn.setAttribute('aria-expanded', String(open));
     btn.innerHTML = open ? ICONS.close : ICONS.menu;
   });
+}
+
+// ------------------------------------------------------------------ Sign in with Cfx.re (assets/js/account.js)
+function renderAccount() {
+  const box = document.getElementById('account');
+  if (!box) return;
+  box.textContent = '';
+  if (!canSignIn()) return;
+  const s = session();
+  if (!s) {
+    const b = document.createElement('button');
+    b.className = 'btn btn-ghost account-btn';
+    b.type = 'button';
+    b.innerHTML = ICONS.user;
+    const label = document.createElement('span');
+    label.textContent = 'Sign in';
+    b.append(label);
+    b.title = 'Sign in with your Cfx.re account';
+    b.setAttribute('aria-label', 'Sign in with Cfx.re');
+    b.addEventListener('click', async () => {
+      b.disabled = true;
+      try { await signIn(); } catch (e) { b.disabled = false; toast(`Sign in could not start (${e.message}). Try again.`); }
+    });
+    box.append(b);
+    return;
+  }
+  const b = document.createElement('button');
+  b.className = 'btn account-btn is-in';
+  b.type = 'button';
+  b.setAttribute('aria-haspopup', 'menu');
+  b.setAttribute('aria-expanded', 'false');
+  b.innerHTML = ICONS.user;
+  const name = document.createElement('span');
+  name.className = 'account-name';
+  name.textContent = s.username;
+  b.append(name);
+  b.title = `Signed in as ${s.username} (Cfx.re)`;
+  const menu = document.createElement('div');
+  menu.className = 'account-menu';
+  menu.hidden = true;
+  menu.setAttribute('role', 'menu');
+  const who = document.createElement('div');
+  who.className = 'account-who';
+  who.textContent = `Signed in with Cfx.re as ${s.username}`;
+  const out = document.createElement('button');
+  out.type = 'button';
+  out.className = 'btn btn-block';
+  out.setAttribute('role', 'menuitem');
+  out.textContent = 'Sign out';
+  out.addEventListener('click', () => {
+    signOut();
+    renderAccount();
+    document.dispatchEvent(new CustomEvent('cnc-account'));
+    toast('Signed out');
+  });
+  menu.append(who, out);
+  b.addEventListener('click', () => {
+    menu.hidden = !menu.hidden;
+    b.setAttribute('aria-expanded', String(!menu.hidden));
+  });
+  document.addEventListener('click', (e) => { if (!box.contains(e.target)) { menu.hidden = true; b.setAttribute('aria-expanded', 'false'); } });
+  box.append(b, menu);
+}
+
+async function account() {
+  renderAccount();
+  const done = await finishSignIn();
+  if (!done) return;
+  renderAccount();
+  document.dispatchEvent(new CustomEvent('cnc-account'));
+  toast(done.ok ? `Signed in as ${done.session.username}` : 'Sign in did not finish. Try again.');
 }
 
 function footer() {
@@ -156,6 +230,7 @@ function reveal() {
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 header();
+account();
 footer();
 playModal();
 liveStatus();

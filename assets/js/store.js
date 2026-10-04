@@ -1,6 +1,7 @@
 // Store: catalogue (Tebex Headless API, or store/catalog.json without a token), cart, and the Tebex checkout.
 import { CONFIG } from './config.js';
 import { esc, toast } from './site.js';
+import { usableBasket, remember } from './account.js';
 
 const API = 'https://headless.tebex.io/api';
 const CART_KEY = 'cnc-cart';
@@ -174,6 +175,9 @@ async function checkout() {
   const btn = $('checkout');
   btn.disabled = true; btn.textContent = 'Opening checkout…';
   try {
+    // signed in with Cfx.re already: the cart goes into that basket and straight to payment
+    const signed = await usableBasket();
+    if (signed) { await pay(signed.ident, lines, signed.packages); return; }
     const { data: basket } = await tebex(`/accounts/${CONFIG.tebexToken}/baskets`, {
       method: 'POST',
       body: JSON.stringify({ complete_url: new URL('thanks.html', here()).href, cancel_url: here(), complete_auto_redirect: true }),
@@ -189,21 +193,29 @@ async function checkout() {
   }
 }
 
+// the cart into a logged-in basket (what it holds already is not added twice), then Tebex's payment page
+async function pay(ident, lines, have) {
+  const already = new Set((Array.isArray(have) ? have : []).map((p) => String(p.id)));
+  for (const l of lines) {
+    if (already.has(String(l.id))) continue;
+    const p = byId.get(l.id);
+    await tebex(`/baskets/${ident}/packages`, {
+      method: 'POST',
+      body: JSON.stringify({ package_id: Number(l.id), quantity: l.qty, ...(p?.type === 'subscription' ? { type: 'subscription' } : {}) }),
+    });
+  }
+  const { data } = await tebex(`/accounts/${CONFIG.tebexToken}/baskets/${ident}`);
+  remember(data);
+  store.del(BASKET_KEY);
+  location.href = data.links.checkout;
+}
+
 async function finishCheckout(ident) {
   const saved = store.get(BASKET_KEY, null);
   if (!saved || saved.ident !== ident) { message('That checkout expired. Add your items again and press Checkout.'); return; }
   message('Logged in. Taking you to payment…');
   try {
-    for (const l of saved.lines) {
-      const p = byId.get(l.id);
-      await tebex(`/baskets/${ident}/packages`, {
-        method: 'POST',
-        body: JSON.stringify({ package_id: Number(l.id), quantity: l.qty, ...(p?.type === 'subscription' ? { type: 'subscription' } : {}) }),
-      });
-    }
-    const { data } = await tebex(`/accounts/${CONFIG.tebexToken}/baskets/${ident}`);
-    store.del(BASKET_KEY);
-    location.href = data.links.checkout;
+    await pay(ident, saved.lines, []);
   } catch (e) {
     message(`Payment could not open (${e.message}). Your cart is still here: press Checkout to try again.`);
   }

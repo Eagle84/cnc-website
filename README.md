@@ -17,6 +17,13 @@ Everything you may want to change is in [`assets/js/config.js`](assets/js/config
 | `tebexToken` | The Tebex Headless **public** token. Empty: the store shows [`store/catalog.json`](store/catalog.json) and checkout opens `tebexStore`. |
 | `tebexStore`, `tebexPaymentHistory` | The Tebex store and the buyers' payment history page. |
 
+## Sign in with Cfx.re
+
+The header's **Sign in** is Tebex's own Cfx.re login, done before checkout (`assets/js/account.js`): a Tebex basket is
+created, the player logs in on Tebex's page and comes back to the page they were on, signed in as their Cfx.re name.
+Checkout then adds the cart to that basket and goes straight to payment. Only the basket id and the name are kept,
+in the browser. In game nobody signs in: the server knows the player by the same Cfx.re account.
+
 ## Content
 
 - **Release notes**: `notes/<lang>.md`, copied from the server repo's `docs/release-notes/` by `tools/publish_site.mjs` there. Owner-only lines ("Server owners: ...") are hidden on the site.
