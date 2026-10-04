@@ -83,7 +83,7 @@ function footer() {
       </div>
       <div class="legal-line">
         <span>© ${year} CnC. Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re.</span>
-        <span>No in-game currency is sold. Payments by Tebex.</span>
+        <span>Payments by Tebex.</span>
       </div>
     </div>`;
   document.body.append(el);

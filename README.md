@@ -37,4 +37,4 @@ Locally the tests use your installed Chrome; in CI (`.github/workflows/test.yml`
 
 Settings → Pages → *Deploy from a branch* → `main` / root. A custom domain can be added there later.
 
-Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re. No in-game currency is sold.
+Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re.
