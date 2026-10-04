@@ -2,6 +2,75 @@
 
 Trumpai ir paprastai. Naujausios naujienos – viršuje. (Versijų numeriai – skliaustuose.)
 
+## 🧍 Matote savo veikėją, Z juostos nebėra, o taksi stovi kelyje (84)
+- **Dabar matote savo veikėją.** Veikėjo pasirinkimo langas buvo nupieštas per visą ekraną, todėl veikėjo, kurį žaidimas ten pastato, nesimatė. Kortelės dabar stulpelyje kairėje, pasirinkto veikėjo byla – dešinėje, o ekrano vidurys paliktas pačiam žaidimui: ten stovi jūsų veikėjas. Naujo veikėjo forma ir įkėlimo ekranas atrodo kaip anksčiau. ↑ ↓ (arba ← →) renkatės, Enter žaidžia.
+- **Penkių langelių juostos ant Z nebėra.** Laikant Z jau nebepiešiami penki langeliai ekrano apačioje. Pats inventorius ir jo skaičių klavišai veikia kaip anksčiau.
+- **Taksi užsakymo automobilis stovi kelyje.** „VIP kelionės“ taksi stovėjo viešbučio „Richman“ vestibiulyje už stiklinių durų. Dabar užsakymo automobilis (ir motociklas) laukia arčiausiame kelyje prie savo vietos; tą pačią vietą viešbutyje naudojo du taksi užsakymai („VIP kelionė“ ir vestuvės). Lėktuvai ir valtys kuriami ten, kur ir anksčiau.
+- **M – tik telefonas.** CnC telefonas („Clout“, Tamsusis tinklas) naudojo tą pačią komandą kaip telefonas, todėl M galėjo atidaryti jį vietoj tikrojo, su „Clout“ kaip vieninteliu ženkliuku. Dabar tai `/cnc_phone` arba F6 > Telefonas.
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` sustabdžius serverį (veikėjo pasirinkimas ir inventorius yra puslapiai, kopijuojami į `qb-multicharacter` ir `qb-inventory`), tada paleiskite. Taksi ir telefono taisymai yra cy-cnc: `update_live.bat` įkelia juos be perkrovimo.
+
+## 🧹 Tvarkingesnis ekranas: padėkite CnC meniu ten, kur norite (82)
+- **CnC meniu (F6) vieta.** Paspauskite **M** (arba spustelėkite **Perkelti meniu** jo apačioje), tada vilkite jį arba pastumkite rodyklėmis (Shift – didesniais žingsniais). **Enter** išsaugo vietą, **R** grąžina jį po ieškomumo žvaigždutėmis, **Esc** atšaukia. Jis vietą prisimena.
+- **Mažesnis CnC meniu.** Siauresnis, su glaudesnėmis eilutėmis, todėl uždengia mažiau žaidimo.
+- **Ramesnis pokalbis.** Uždarytas pokalbis rodo tik paskutines 3 žinutes; atidarykite jį (T), kad perskaitytumėte visas.
+- **Žaidėjų sąrašas** atsidaro su `/playerlist`, per CnC meniu arba laikant U. Anksčiau išsaugotas F5 klavišas jo nebeatidaro virš parduotuvės.
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada paleiskite iš naujo arba konsolėje `ensure cy-cnc` / `ensure chat` / `ensure qb-playerlist`.
+
+## 👑 VIP iš tikrųjų: banko pinigai kas mėnesį, žymė, Discord rolė ir vieta eilėje (81)
+- **Banko pinigai kas mėnesį.** VIP Bronze suteikia **50 000 $**, Silver – **125 000 $**, Gold – **300 000 $**: su pirkiniu ir vėl su kiekvienu mėnesio atnaujinimu. Jie laukia **F5 > Mano pirkiniai**, o „Atsiimti“ įdeda juos į veikėjo, kuriuo žaidžiate, banką.
+- **VIP žymė.** Karūna ir **VIP** jūsų lygio spalva šalia jūsų vardo – pokalbyje ir žaidėjų sąraše (laikykite U).
+- **Jūsų Discord rolė.** VIP Bronze, Silver arba Gold CnC Discord serveryje, kol galioja jūsų VIP, Discord paskyrai, susietai su jūsų FiveM. Ji nuimama, kai VIP baigiasi.
+- **Vieta eilės priekyje.** Kai serveris pilnas, laukiate prisijungimo ekrane, kuris rodo jūsų vietą, ir įeinate, kai atsilaisvina vieta: pirmiausia Gold, tada Silver, tada Bronze, tada visi kiti.
+- **Grąžinus pinigus viskas atimama**, ir banko pinigai (bankas gali nukristi žemiau nulio).
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada serverio perkrovimas. Stulpeliai `store_memberships.discord_id` ir `role_tier` sukuriami savaime. Discord rolės: sukurkite tris roles, įrašykite jų ID į discord.cfg kaip `set cy_store_role_bronze "<id>"` (ir `_silver`, `_gold`), duokite botui **Manage Roles** ir perkelkite jo rolę virš šių trijų. Kol veikia eilė, ji sustabdo cfx `hardcap`; su `Config.Queue.enabled = false` hardcap paliekamas ramybėje. Kiekvieno lygio pinigai – `bank` skiltyje `Config.Packages` (cy-store faile config.lua; 0 – be pinigų). Žaidimo pinigų pardavimas pažeidžia Tebex FiveM taisykles.
+
+## 🧭 Vienas meniu viskam: CnC meniu ant F6 (80)
+- **F6 dabar yra CnC meniu.** Viršuje – jūsų portretas, vardas, darbas ir ID, toliau grynieji, bankas ir lygis, o tada: **Self / Profile** (tai, ką rodo F7), **Actions - General** (telefonas, garsas, gaujos, vienkartinis telefonas, jūsų motelio kambarys, prisijungę žaidėjai), **Actions -** jūsų darbas (kontraktai ir viskas, ką galite daryti ten, kur stovite), **Admin / Tools** personalui ir **Store** (tai, ką atidaro F5).
+- **Jis jūsų darbo spalvų.** Policija mėlyna, EMS oranžinė, Hakeris žydra, Taksi geltona, Valytojas turkio, nusikaltimai raudona, visi kiti žalia – su tinkamu portretu ir fonu.
+- **Rodyklės ir Enter** arba pelė. **←** arba **Backspace** – atgal, **Esc** – uždaryti. F5 ir F7 vis dar tiesiogiai atidaro parduotuvę ir profilį; policijos radaras yra ir policijos veiksmuose (ir vis dar F10).
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada paleiskite iš naujo arba konsolėje `ensure cy-cnc`. Kuris darbas gauna kurią išvaizdą – `Config.CncMenu.jobThemes` cy-cnc faile config.lua.
+
+## 🪙 CnCoins, savi numeriai ir rinkiniai (79)
+- **CnCoins.** Nusipirkite paketą svetainėje (1 000 už 4,99 $, iki 27 000 su 35 % premija) ir išleiskite monetas **F5**: jūsų likutis rodomas parduotuvės viršuje, šalia Uždaryti. Tai, ką perkate už monetas, laukia skiltyje **Mano pirkiniai**, kaip ir visa kita. Prieš paimdamas monetas pirkimas dar kartą paprašo patvirtinti.
+- **Savi numeriai (400 CnCoins).** Jūsų tekstas ant vieno iš jūsų automobilių: nuo 2 iki 8 raidžių, skaičių ir tarpų. Atsiimkite skiltyje „Mano pirkiniai“, pasirinkite automobilį (jis turi stovėti garaže) ir įrašykite numerius; bagažinė, daiktadėžė ir purvo patobulinimai keliauja kartu.
+- **Rinkiniai.** Vienas pirkinys, keli dalykai: kiekviena dalis rodoma skiltyje „Mano pirkiniai“ atskirai (VIP ir monetos iškart, likusius reikia atsiimti).
+- **Automobilius** taip pat galima parduoti, bet tik papildomus automobilius, kuriuos serveris turi teisę parduoti; parduotuvėje jų dar nėra.
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada serverio perkrovimas. Lentelės `store_wallets` ir `store_coin_ledger` bei stulpelis `store_entitlements.spec` sukuriami savaime. Sukurkite monetų paketus Tebex (kategorija CnCoins, tos pačios keturios komandos kaip VIP paketams) ir įrašykite kiekvieno paketo ID į `Config.CoinPacks` cy-store faile config.lua. Monetų pardavimas pažeidžia Cfx.re licenciją (§3.1); `Config.Coins.enabled = false` visa tai išjungia.
+
+## 🛒 Parduotuvė atidaryta: F5, VIP ir Mano pirkiniai (78)
+- **F5 – parduotuvė.** VIP Bronze, Silver ir Gold: ką kiekvienas suteikia ir kiek kainuoja. **Pirkti** atidaro CnC parduotuvę jūsų naršyklėje (eagle84.github.io/cnc-website): ten prisijungiate ta pačia Cfx.re paskyra, kuria žaidžiate, ir mokate per Tebex. Ją atidaro ir `/store`.
+- **Mano pirkiniai.** Viskas, kas nupirkta su jūsų Cfx.re paskyra, naujausi viršuje: kada, kas ir kur tai yra. Daiktas laukia, kol jį **atsiimsite** veikėjui, kuriuo žaidžiate; VIP savaime galioja visai paskyrai, o meniu viršuje parašyta, iki kada. Pirkinys pasiekia serverį maždaug per minutę po apmokėjimo, net kai esate neprisijungę.
+- **Nieko už žaidimo pinigus ir nieko atsitiktinio.** Mokama tik per Tebex, o parduotuvė neparduoda nei pinigų, nei staigmenų dėžių (Cfx.re taisyklės).
+- **Klavišai.** F5 buvo žaidėjų sąrašas: jam laikykite **U**, kaip ir anksčiau. Policijos radaras perkeltas iš F5 į **F10**; F9 lieka pavojaus mygtukas.
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada serverio perkrovimas. Jis į server.cfg įrašo `ensure cy-store` (ir `exec tebex.cfg`, kai tas failas yra šalia server.cfg); lentelės `store_entitlements`, `store_memberships` ir `store_audit` sukuriamos savaime. Tebex skydelyje kiekvienam paketui nustatykite komandas iš docs/STORE-DESIGN.md 6.3 vietoj `cy_store_pending`.
+
+## 📊 Jūsų rangas – tai, ką dabar veikiate (77)
+- **Kiekvienas darbas dabar turi savo rangą.** Policija, medikai, taksi, samdomas žudikas, civilis, bet kuri karjera — kiekvienas turi atskirą XP ir rangą. Patikrinkite rango juostą vairuodami taksi — tai jūsų taksi rangas; persijunkite į samdomo žudiko darbą — tai jo rangas. Senieji skaičiai iš prieš šią versiją neperkelti — visi pradeda kiekvieną rangą nuo 1 lygio.
+- **Rangai dabar tikras grindimas** — apie 3 kartus sunkiau nei anksčiau. Kur nors pasiekti reikia sesijų, ne minučių.
+- **Tinkamumas darbui (policija, samdomas žudikas) tikrinamas tiesiog pagal jūsų civilio rangą** — reputaciją susikuriate kaip civilis, o darbo rangas prasideda iš naujo, kai jį gaunate.
+- **Samdomas žudikas vėl yra darbas.** Užsakymų darbo ėmimasis reiškia atsisakymą bet kokio turėto darbo, kaip ir imantis bet kurio kito darbo — versijos (73) gudrybė „pasilikite kitą darbą“ dingo. Visa kita iš tos versijos lieka: sutartys duomenų bazėje, ribotos baudos, pasiūlymai telefone, Backspace atšaukimui, pasiruošimo užduočių grandinė.
+- **Miesto lygis dingo** — jūsų lygis, rango titulas, atrakinimai ir apdovanojimai už lygio pakilimą dabar priklauso nuo to darbo rango, kurį dabar turite, kaip ir visa kita šioje versijoje. Pakilimas bet kuriame darbe dabar moka tą pačią premiją ir parodo, kas atrakinta.
+- `/myranks` parodo visus kada nors pasiektus rangus, ne tik tą, kuris rodomas dabar.
+- Serverio savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada paleiskite iš naujo arba konsolėje paleiskite `ensure cy-xpprogressbar` / `ensure cy-hitman` / `ensure cy-cnc`.
+
+## 🧨 Samdomam žudikui reikia daugiau nei ginklo (74)
+- **Pasiruoškite arba gaukite informaciją, kol žudymas skaičiuojamas.** Kai sutartis tampa aktyvi, samdomas žudikas pirmiausia gauna trumpą užduotį: slaptą ginklų perdavimą, informatoriaus užuominą, o galbūt abu, atsitiktinai parinktus iš vietų, išmėtytų po visą žemėlapį. Pereikite visus punktus (prieikite ir spauskite E) iš eilės, kol žudymas bus apmokėtas — nužudyti taikinį anksčiau vis tiek galima, tik už tai nemokama. Kai kurioms slaptavietėms reikia ginklo leidimo; be jo punktas vis tiek įvykdomas, tik be ginklo.
+- **Tempimas vėl veikia.** Žvaigždėmis pagrįstame policijos meniu kažkada tyliai pranyko Tempimo parinktis; antrankiais surakintą, ant kojų stovintį ir nesitraukiantį įtariamąjį vėl galima tempti.
+- **Persekiojimo garsas perkeltas nuo X.** Jis dalinosi klavišu su rankų pakėlimu; dabar tai **B** (galima pakeisti GTA klavišų nustatymuose).
+- **Netoliese palikta taksi saugi.** Pasitraukus vos keliais žingsniais nuo išsinuomoto taksi, 15 sekundžių konfiskavimo laikmatis daugiau neprasideda — tik tikras nutolimas jį paleidžia.
+- **Visi taksi biurai dabar rodomi žemėlapyje,** ne tik tas, kuriame pradėjote — pilki, kol nepriimtas darbas, ir spalvoti, kai jis jau jūsų.
+- **Bankomato įsilaužimas dabar turi tiesioginę užsklandą.** Atsistokite prie bankomato su įsilaužimo rinkiniu (arba hakerio nešiojamu kompiuteriu), ir iškart pasirodys **Spauskite E** užsklanda, kuri pradeda įsilaužimą vietoje — F6 ir rinkinio „Use“ vis tiek veikia taip pat.
+- Serverio savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada paleiskite iš naujo arba konsolėje paleiskite `ensure cy-hitman` / `ensure cy-policejob` / `ensure cy-ambulancejob` / `ensure cy-taxijob`. cy-hitman telefono pataisa automatiškai pakyla į `v3` kito paleidimo metu.
+
+## 🎯 Samdomas žudikas gauna licenciją, o jo užduotys tampa tikros (73)
+- **Licencija, o ne darbas.** Užsiregistravus Samdomų žudikų paslaugų punkte darbas nebesikeičia. Pasilaikote turėtą darbą, nešvarius pinigus, juodąją rinką ir „Dark Web“ (samdomo žudiko darbas uždarydavo visus tris). Dabar užsiregistruoti gali visi, išskyrus policiją ir medikus, ne tik bedarbiai. Reikia 10 rango ir 25 000 USD pas jus (grynaisiais ar banke; nenuskaičiuojama), ir meniu tai pasako. Veikėjas, kuris dar turi seną samdomo žudiko darbą, kitą kartą prisijungęs perkeliamas į licenciją.
+- **Sutartys, kurios nepraranda jūsų pinigų.** Užsakymas laikomas duomenų bazėje. Sutartis, kurios niekas nepaima per 30 minučių, baigiasi, o kaina grįžta į jūsų banką, taip pat ir tada, kai ją nutraukė perkrovimas ar strigtis. Savo sutartį galite atšaukti telefone, kol niekas jos nepaėmė. Žudikas, kuriam nepavyko, moka daugiausia 25 000 USD ir niekada daugiau, nei turi (kas turėjo mažiau, nemokėdavo nieko ir niekas nebeveikė kaip reikia). Užsakovas, kuris atsijungia, nebeatšaukia sutarties ir nebebaudžia žudiko.
+- **Pasiūlymai – sąrašas telefone.** „Hitman“ programėlė rodo sutartis, kurias galite paimti, su kaina, bauda ir likusiu laiku bei mygtuku „Accept“: laimi pirmas paspaudimas (nebereikia lenktyniauti dėl Y). Programėlė rodo ir jūsų paskelbtas sutartis. Klavišas apsigalvoti per pirmas 5 sekundes – **Backspace** (buvo X, o tai rankos į viršų).
+- **„Dark Web“ reikalauja licencijos.** Sutarčiai paimti ten reikia 10 rango ir licencijos; be jų lenta tik skaitoma ir pasako, kur ją gauti. Telefono ženkliukas skaičiuoja tik tai, ką galėtumėte paimti, o „Dark Web“ nužudymo langas skaitomas iš nustatymų (kode buvo 10, kad ir koks būtų nustatymas).
+- **Samdomo žudiko užduotys daro tai, ką sako.** Sekimas: taikinys vaikšto gatvėmis, o jūs laikotės 10–80 metrų atstumu, matomumo zonoje; per arti, per toli ar be akių kontakto 8 sekundes – ir užduotis prarasta; ten, kur jis sustoja, fotografuojate. Pabėgimo vairuotojas: klientas sėdi šalia jūsų ir dokuose turi būti gyvas ir automobilyje. Sargybinių pašalinimas: sargybiniai turi būti numušti, laikmačio neužtenka.
+- **F4 > Vietos** rodo tris Samdomų žudikų paslaugų punktus (Elysian salos dokai, Sandy Shores, West Vinewood skersgatvis).
+- Serverių savininkams, kaip įdiegti šią versiją: `install_windows.bat` (serveris gali veikti), tada serverio perkrovimas arba `ensure cy-hitman` txAdmin konsolėje (jis pataiso telefoną ir kartą perkrauna qb-phone). `update_live` ir `/cyupdate` įkelia užduotis, „Dark Web“ ir vietų sąrašą, bet ne patį cy-hitman. Lentelė `cy_hitman_contracts` sukuriama pati (oxmysql).
+
 ## 🗺️ Žemėlapis, kuris turi prasmę (72)
 - **Piktogramos, tinkančios vietai.** Fikseris – žvaigždė, juodoji rinka – kaukė, plovimo priedangos rodo grynuosius, automobilių eksportas – automobilį, laukai – lapą, žolės parduotuvės – lapą ant namo, nardymo vietos – narovo kaukę, užstato biuras – užstato piktogramą, taksofonas – telefoną. Užimamas rajonas – karūna, o gaujos būstinė – klubo namai (abu buvo tos pačios dvi kaukolės, vienos ant kitų). „Dark Web“ užsakymas, premija už galvą ir samdomo žudiko biuras dabar trys skirtingos piktogramos (visos trys buvo ta pati kaukolė).
 - **Tie patys dalykai vienoje eilutėje.** Žemėlapio legenda „Miesto kamera“ išvardija vieną kartą, o ne dvylika kartų su vieta, ir taip pat greičio kameras, narkotikų kampus, nardymo vietas, rifus, policijos nuovadas ir skrydžius. Kameros žemėlapyje rodomos tik tada, kai esate per 300 metrų.

@@ -2,6 +2,75 @@
 
 Short and simple. The newest news is first. (Build numbers are in brackets.)
 
+## 🧍 You can see your character, the Z bar is gone, and the cab is on the road (84)
+- **You can see your character now.** The character select was painted over the whole screen, so the character the game puts there was hidden. The cards are in a column on the left, the picked character's file on the right, and the middle of the screen is the game's own: your character stands there. The new-character form and the loading screen look as before. ↑ ↓ (or ← →) choose, Enter plays.
+- **No more five-slot bar on Z.** Holding Z no longer draws the five slots at the bottom of the screen. The inventory itself and its number keys work as before.
+- **The taxi's cab is on the road.** The VIP Fare's cab stood inside the lobby of the Richman hotel, behind the glass doors. A job's car (and a bike) now waits on the nearest road to its spot; two taxi contracts (the VIP Fare and the wedding party) used that hotel spot. Planes and boats are made where they were.
+- **M is the phone, only the phone.** The CnC phone (Clout, the Dark Web) used the same command as the phone, so M could open it instead of the real one, with Clout as its only icon. It is `/cnc_phone` now, or F6 > Phone.
+- Server owners, how to install this build: `install_windows.bat` with the server stopped (the character select and the inventory are pages copied into `qb-multicharacter` and `qb-inventory`), then start it. The cab and the phone fixes are in cy-cnc: `update_live.bat` loads those without a restart.
+
+## 🧹 A tidier screen: put the CnC menu where you want it (82)
+- **Place the CnC menu (F6).** Press **M** (or click **Move menu** at its foot), then drag it or nudge it with the arrows (Shift for bigger steps). **Enter** keeps the spot, **R** puts it back under the wanted stars, **Esc** cancels. It remembers the spot.
+- **A smaller CnC menu.** Narrower, with tighter rows, so it covers less of the game.
+- **A quieter chat.** Closed, the chat shows only its last 3 messages; open it (T) to read them all.
+- **The list of players** opens with `/playerlist`, the CnC menu or by holding U. An F5 key saved from before no longer opens it on top of the store.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart, or `ensure cy-cnc` / `ensure chat` / `ensure qb-playerlist` in the console.
+
+## 👑 VIP gets real: bank money every month, a tag, a Discord role, a place in the queue (81)
+- **Bank money every month.** VIP Bronze comes with **$50,000**, Silver with **$125,000** and Gold with **$300,000**: with the purchase, and again with each monthly renewal. It waits in **F5 > My purchases**, and Claim puts it in the bank of the character you are playing.
+- **A VIP tag.** A crown and **VIP** in your tier's colour next to your name, in chat and in the list of players (hold U).
+- **Your Discord role.** VIP Bronze, Silver or Gold on the CnC Discord while your VIP runs, for the Discord account linked to your FiveM. It goes when the VIP ends.
+- **A place ahead in the queue.** When the server is full you wait on the connecting screen, which says where you are, and get in when a slot frees: Gold first, then Silver, then Bronze, then everyone else.
+- **A refund takes it all back**, the bank money too (the bank can go below zero).
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart the server. The columns `store_memberships.discord_id` and `role_tier` are created by themselves. Discord roles: create the three roles, put their ids in discord.cfg as `set cy_store_role_bronze "<id>"` (and `_silver`, `_gold`), give the bot **Manage Roles** and move its role above the three. The queue stops cfx's `hardcap` while it runs; `Config.Queue.enabled = false` leaves hardcap alone. The money of each tier is `bank` in `Config.Packages` (cy-store's config.lua; 0 for none). Selling in-game money is against Tebex's FiveM rules.
+
+## 🧭 One menu for everything: the CnC menu on F6 (80)
+- **F6 is the CnC menu now.** Your portrait, name, job and ID at the top, then your cash, bank and level, then: **Self / Profile** (what F7 shows), **Actions - General** (phone, sound, gangs, the burner phone, your motel room, the players online), **Actions -** your job (contracts and everything you can do where you stand), **Admin / Tools** for staff, and the **Store** (what F5 opens).
+- **It wears your job's colours.** Police blue, EMS orange, Hacker cyan, Taxi yellow, Cleaner teal, crime red, everyone else green, with a portrait and a backdrop to match.
+- **Arrows and Enter**, or the mouse. **←** or **Backspace** goes back, **Esc** closes. F5 and F7 still open the store and your profile directly; the police radar is in the police actions too (and still F10).
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart, or `ensure cy-cnc` in the console. Which job gets which look is `Config.CncMenu.jobThemes` in cy-cnc's config.lua.
+
+## 🪙 CnCoins, your own plate, and bundles (79)
+- **CnCoins.** Buy a pack on the website (1,000 for $4.99, up to 27,000 with a 35% bonus) and spend the coins in **F5**: your balance is at the top of the store, next to Close. What you buy with coins waits in **My purchases** like anything else. A purchase asks once more before it takes the coins.
+- **Custom plate (400 CnCoins).** Your own text on one of your cars: 2 to 8 letters, numbers and spaces. Claim it in My purchases, pick the car (it has to be parked in a garage) and type the plate; the trunk, the glovebox and the mud upgrades come along.
+- **Bundles.** One purchase, several things: each part shows in My purchases by itself (VIP and coins at once, the rest to claim).
+- **Cars** can be sold too, but only add-on cars the server has the right to sell; none are in the store yet.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart the server. The tables `store_wallets` and `store_coin_ledger` and the column `store_entitlements.spec` are created by themselves. Create the coin packs in Tebex (category CnCoins, the same four commands as the VIP packages) and put each package id in `Config.CoinPacks` in cy-store's config.lua. Selling coins is against the Cfx.re licence (§3.1); `Config.Coins.enabled = false` turns all of it off.
+
+## 🛒 The store opens: F5, VIP and My purchases (78)
+- **F5 is the store.** VIP Bronze, Silver and Gold, what each gives and what it costs. **Buy** opens the CnC store in your own browser (eagle84.github.io/cnc-website): you log in there with the same Cfx.re account you play with and pay on Tebex. `/store` opens it too.
+- **My purchases.** Everything bought with your Cfx.re account, newest first: when, what, and where it is. An item waits there until you **Claim** it on the character you are playing; VIP is on your whole account by itself, and the top of the menu says until when. A purchase reaches the server about a minute after you pay, also while you are offline.
+- **Nothing for in-game money, nothing random.** Payments are on Tebex only, and the store sells no money and no loot boxes (the Cfx.re rules).
+- **Keys.** F5 was the list of players: hold **U** for it, as before. The police radar moved from F5 to **F10**; F9 stays the panic button.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart the server. It adds `ensure cy-store` (and `exec tebex.cfg` when that file is next to server.cfg) to server.cfg; the tables `store_entitlements`, `store_memberships` and `store_audit` are created by themselves. In the Tebex panel give each package the commands in docs/STORE-DESIGN.md 6.3 in place of the placeholder `cy_store_pending`.
+
+## 📊 Your rank is whatever you're doing right now (77)
+- **Every job has its own rank now.** Police, EMS, taxi, hitman, civilian, any career — each tracks its own XP and rank separately. Check your rank bar while you're driving a cab and it's your taxi rank; switch to the hitman job and it's your hitman rank. Nobody's overall numbers from before this build carried over — everyone starts every role at rank 1.
+- **Ranks are a real grind now** — about 3x steeper than before. Getting anywhere takes sessions, not minutes.
+- **Qualifying for a job (police, hitman) is checked against your civilian rank specifically** — you build the reputation to get in as a civilian, then the job's own rank starts fresh once you're in it.
+- **Hitman is a job again.** Taking the contract work means giving up whatever job you had, same as taking any other job — the "keep your other job" trick from build (73) is gone. Everything else from that build stays: contracts held in the database, capped fines, offers in the phone, Backspace to cancel, the mission-waypoint chain.
+- **The city level is gone** — your level, rank title, unlocks, and level-up rewards all come from whichever job's rank you currently hold, same as everything else in this build. A promotion in any job now pays the same level-up cash and lists what it unlocked.
+- `/myranks` lists every rank you've ever earned, not just the one showing right now.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart, or `ensure cy-xpprogressbar` / `ensure cy-hitman` / `ensure cy-cnc` in the console.
+
+## 🧨 The hitman needs more than a trigger (74)
+- **Gear up or get intel before the kill counts.** Once a contract goes active, the hitman gets a short errand first: a weapon dead drop, a tip from an informant, maybe both, picked at random from spots spread across the map. Clear every stop (walk up, press E) in order before the kill is paid out — killing the target early still works, it just doesn't pay. Some caches need a weapon permit; without one the stop still clears, just without the gun.
+- **Drag works again.** The star-based police menu had quietly lost its Drag option; a cuffed suspect, on their feet, not already being dragged, can be dragged again.
+- **The chase sound moved off X.** It shared the key with hands-up; it's **B** now (still rebindable in GTA's own keybind settings).
+- **A taxi left nearby is safe.** Stepping a few steps from your rented cab no longer starts its 15-second repossession clock against you — only actually walking away does.
+- **Every taxi office shows up on the map now**, not just the one you started at — muted grey until you've taken the job, full colour once you have.
+- **The ATM hack has a direct prompt now.** Stand at a machine with a hack kit (or a hacker's laptop) and a **Press E** prompt starts it right there — F6 and the kit's own Use still work too.
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart, or `ensure cy-hitman` / `ensure cy-policejob` / `ensure cy-ambulancejob` / `ensure cy-taxijob` in the console. cy-hitman's phone patch bumps to `v3` automatically on next start.
+
+## 🎯 The hitman gets a licence, and its missions become real (73)
+- **A licence, not a job.** Signing up at Hitman Services no longer changes your job. You keep the job you had, your dirty money, the black market and the Dark Web (the hitman job locked you out of all three). Anyone but the police and the medics can sign up now, not only the unemployed. It needs rank 10 and $25,000 on you (cash or bank; it is not charged), and the menu says so. A character who still has the old hitman job is moved to the licence at the next login.
+- **Contracts that cannot lose your money.** A hit is held in the database. A contract nobody takes in 30 minutes ends and the price goes back to your bank, and so does one that a restart or a crash cut off. You can cancel your own contract from the phone while nobody has taken it. A hitman who fails pays at most $25,000 and never more than they have (a hitman with less than that used to pay nothing and nothing worked right). A poster who logs out no longer cancels the contract or fines the hitman.
+- **Offers are a list in the phone.** The Hitman app lists the contracts you can take with the price, the fine and the time left, and an Accept button: the first click wins (no more racing for Y). The app also shows the contracts you put out. The key to change your mind in the first 5 seconds is **Backspace** (it was X, which is hands up).
+- **The Dark Web takes the licence.** Taking a contract there needs rank 10 and the licence; the board is read only without them and says where to get it. The phone's badge counts only what you could take, and the Dark Web's kill window is read from the config (the code said 10 whatever it was).
+- **The hitman's missions do what they say.** The Tail: a mark walks the streets and you stay 10 to 80 metres behind, in sight; too close, too far or out of sight for 8 seconds and it is lost; where they stop is where you photograph. Getaway Driver: your client sits beside you and has to be alive and in the car at the docks. Take out the guards: the guards have to be down, a timer is not enough.
+- **F4 > Places** lists the three Hitman Services men (Elysian Island docks, Sandy Shores, West Vinewood back alley).
+- Server owners, how to install this build: `install_windows.bat` (the server may be running), then restart the server, or `ensure cy-hitman` in the txAdmin console (it patches the phone and restarts qb-phone once). `update_live` plus `/cyupdate` brings in the missions, the Dark Web and the Places list, but not cy-hitman itself. The table `cy_hitman_contracts` is created by itself (oxmysql).
+
 ## 🗺️ A map that makes sense (72)
 - **Icons that fit their place.** The Fixer is a star, the black market a mask, laundering fronts show cash, the car exports a car, the fields a leaf, the weed stores a leaf on a house, the dive sites a diver's mask, the bail bondsman the bail bonds icon, the payphone a phone. A turf you can take is a crown and a gang's hangout a clubhouse (they were both the same two skulls, and on top of each other). The Dark Web contract, the bounty and the hitman's office are three different icons now (all three were the same skull).
 - **The same things in one line.** The legend of the map lists "City camera" once, not twelve times with a place after it, and the same for speed cameras, drug corners, dive sites, reefs, police stations and flights. Cameras only show on the map when you are within 300 metres.
