@@ -111,7 +111,19 @@ function renderAccount() {
     document.dispatchEvent(new CustomEvent('cnc-account'));
     toast('Signed out');
   });
-  menu.append(who, out);
+  const mine = document.createElement('a');
+  mine.className = 'btn btn-block';
+  mine.setAttribute('role', 'menuitem');
+  mine.href = href('/account/');
+  mine.textContent = 'My purchases';
+  const receipts = document.createElement('a');
+  receipts.className = 'btn btn-block btn-ghost';
+  receipts.setAttribute('role', 'menuitem');
+  receipts.href = CONFIG.tebexPaymentHistory;
+  receipts.target = '_blank';
+  receipts.rel = 'noopener';
+  receipts.textContent = 'Receipts (Tebex) ↗';
+  menu.append(who, mine, receipts, out);
   b.addEventListener('click', () => {
     menu.hidden = !menu.hidden;
     b.setAttribute('aria-expanded', String(!menu.hidden));
@@ -147,7 +159,7 @@ function footer() {
           <li><a href="${href('/notes/')}">Release notes</a></li></ul></div>
         <div><h4>Store</h4><ul>
           <li><a href="${href('/store/')}">VIP &amp; perks</a></li>
-          <li><a href="${href('/store/#history')}">Purchase history</a></li>
+          <li><a href="${href('/account/')}">My purchases</a></li>
           <li><a href="${href('/legal/#refunds')}">Refunds</a></li></ul></div>
         <div><h4>Community</h4><ul>
           <li><a href="${CONFIG.discord}" rel="noopener" target="_blank">Discord</a></li>

@@ -68,7 +68,7 @@ export async function finishSignIn() {
   try {
     const { data } = await tebex(`/accounts/${CONFIG.tebexToken}/baskets/${ident}`);
     if (!data || !data.username) return { ok: false };
-    const s = { ident, username: String(data.username).slice(0, 64), id: data.username_id ? String(data.username_id) : '' };
+    const s = { ident, auth: ident, username: String(data.username).slice(0, 64), id: data.username_id ? String(data.username_id) : '' };
     store.set(KEY, s);
     return { ok: true, session: s };
   } catch {
@@ -78,10 +78,14 @@ export async function finishSignIn() {
 
 export function signOut() { store.del(KEY); store.del(PENDING); }
 
+// the basket the player signed in with, which the game server checks with Tebex for My purchases (kept after the
+// basket was paid: signing in again only when Tebex no longer knows it)
+export const authBasket = () => { const s = session(); return s ? (s.auth || s.ident || '') : ''; };
+
 // a basket that came back logged in from a checkout signs the player in too
 export function remember(basket) {
   if (!basket || !basket.username || !basket.ident) return;
-  store.set(KEY, { ident: basket.ident, username: String(basket.username).slice(0, 64), id: basket.username_id ? String(basket.username_id) : '' });
+  store.set(KEY, { ident: basket.ident, auth: basket.ident, username: String(basket.username).slice(0, 64), id: basket.username_id ? String(basket.username_id) : '' });
 }
 
 // the signed-in basket, if it can still take a cart: not paid yet and still logged in; otherwise null

@@ -12,6 +12,9 @@ export const CONFIG = {
   // The Tebex storefront, used when there is no token, and for payment history.
   tebexStore: 'https://cnc-store.tebex.io',
   tebexPaymentHistory: 'https://checkout.tebex.io/payment-history',
+  // The game server's public HTTPS address for My purchases (cy-store's /history), no trailing slash. The server runs
+  // behind a Tailscale Funnel. Empty: My purchases only links to the Tebex receipts.
+  historyApi: 'https://cnc-server.tail0b6f50.ts.net/cy-store',
   // Release Notes languages offered on the site. Only English for now; add 'he', 'lt', 'ar' to show the language switch again.
   noteLanguages: ['en'],
 };

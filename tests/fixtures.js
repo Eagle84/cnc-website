@@ -2,7 +2,7 @@
 // A test changes it with: await withConfig(page, { joinCode: 'abc123' }). The newest route wins in Playwright.
 import { test as base, expect } from '@playwright/test';
 
-const DEFAULTS = { joinCode: '', tebexToken: '', playerCount: false };
+const DEFAULTS = { joinCode: '', tebexToken: '', playerCount: false, historyApi: '' };
 
 export async function withConfig(page, overrides) {
   const values = { ...DEFAULTS, ...overrides };
