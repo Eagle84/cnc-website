@@ -118,3 +118,49 @@ test('live-shaped Tebex catalogue: ?cat=vip finds "VIP Membership", Silver featu
   await page.goto('/store/?item=7713973');
   await expect(page.locator('#item-dlg')).toContainText('VIP Gold');
 });
+
+test.describe('build .104: bundles, coin packs and what CnCoins buy', () => {
+  test('the categories are VIP, Bundles, CnCoins, in that order, with the bundles and the six packs', async ({ page }) => {
+    await page.goto('/store/');
+    await expect(page.locator('#tabs [role="tab"]')).toHaveText(['VIP Membership', 'Bundles', 'CnCoins', 'Everything']);
+    await page.locator('#tabs [data-cat="bundles"]').click();
+    await expect(page.locator('.product')).toHaveCount(3);
+    await expect(page.locator('.product.featured').filter({ hasText: 'Kingpin Bundle' })).toHaveCount(1);
+    await page.locator('#tabs [data-cat="cncoins"]').click();
+    await expect(page.locator('.product')).toHaveCount(6);
+    await expect(page.locator('.product').first()).toContainText('$1.99');
+  });
+
+  test('Tebex categories come in any order and show VIP, Bundles, CnCoins', async ({ page }) => {
+    await withConfig(page, { tebexToken: 'tok' });
+    const pkg = (id, name) => ({ id, name, total_price: 1, currency: 'USD', type: 'single', image: null, description: '<p>x</p>' });
+    await page.route('https://headless.tebex.io/**', (r) => r.fulfill({ json: { data: [
+      { id: 3, name: 'CnCoins', packages: [pkg(31, '1,000 CnCoins')] },
+      { id: 2, name: 'Bundles', packages: [pkg(21, 'Starter Pack')] },
+      { id: 1, name: 'VIP Membership', packages: [pkg(11, 'VIP Silver')] },
+    ] } }));
+    await page.goto('/store/');
+    await expect(page.locator('#tabs [role="tab"]')).toHaveText(['VIP Membership', 'Bundles', 'CnCoins', 'Everything']);
+  });
+
+  test('what CnCoins buy: every coin shop item with its price, as text', async ({ page }) => {
+    await page.goto('/store/');
+    const items = page.locator('#coinshop .coin-item');
+    await expect(items).toHaveCount(12);
+    await expect(items.filter({ hasText: 'Double XP · 2 hours' }).locator('.coin-price')).toHaveText('250 CnCoins');
+    await expect(items.filter({ hasText: 'Motel locker' }).locator('.coin-price')).toHaveText('from 300 CnCoins');
+    for (const img of await page.locator('#coinshop img').all()) {
+      await img.scrollIntoViewIfNeeded();
+      await expect.poll(() => img.evaluate((i) => i.complete && i.naturalWidth > 0)).toBe(true);
+    }
+  });
+
+  test('the home page shows the three bundles, each leading to the store', async ({ page }) => {
+    await page.goto('/');
+    const cards = page.locator('#bundles .bundle-card');
+    await expect(cards).toHaveCount(3);
+    await expect(cards.nth(2)).toContainText('$39.99');
+    await expect(cards.first()).toHaveAttribute('href', 'store/?cat=bundles');
+    await expect(page.locator('#bundles .band a')).toHaveAttribute('href', 'store/#cncoins');
+  });
+});

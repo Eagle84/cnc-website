@@ -6,7 +6,9 @@ import { usableBasket, remember } from './account.js';
 const API = 'https://headless.tebex.io/api';
 const CART_KEY = 'cnc-cart';
 const BASKET_KEY = 'cnc-basket';
-const BADGES = { 'VIP Silver': 'MOST POPULAR' };
+const BADGES = { 'VIP Silver': 'MOST POPULAR', 'Kingpin Bundle': 'BEST VALUE', '4,800 CnCoins': 'MOST POPULAR', 'Starter Pack': 'ONCE PER ACCOUNT' };
+// the order the categories show in, whatever order Tebex sends them: VIP, then bundles, then coins, then the rest
+const ORDER = (s) => (/vip/.test(s) ? 0 : /bundle/.test(s) ? 1 : /coin/.test(s) ? 2 : 3);
 const here = () => location.href.split(/[?#]/)[0];
 const $ = (id) => document.getElementById(id);
 
@@ -60,7 +62,7 @@ async function loadCatalog() {
         id: String(p.id), name: p.name, price: Number(p.total_price ?? p.base_price), currency: p.currency || 'USD',
         type: p.type, image: p.image, description: p.description, badge: BADGES[p.name],
       })),
-    })).filter((c) => c.packages.length);
+    })).filter((c) => c.packages.length).sort((a, b) => ORDER(a.slug) - ORDER(b.slug));
   }
   const res = await fetch('catalog.json');
   return (await res.json()).categories;

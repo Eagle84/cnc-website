@@ -6,19 +6,129 @@
       "name": "VIP Membership",
       "packages": [
         {
-          "id": "vip-bronze", "name": "VIP Bronze", "price": 4.99, "currency": "USD", "type": "subscription",
+          "id": "vip-bronze",
+          "name": "VIP Bronze",
+          "price": 4.99,
+          "currency": "USD",
+          "type": "subscription",
           "image": "../assets/img/cnc-vip-bronze.png",
           "description": "<p>Your monthly CnC membership:</p><ul><li>$50,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Bronze VIP tag in chat and on the player list</li><li>VIP Bronze role on our Discord</li><li>Ahead of players without VIP in the queue when the server is full</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
         },
         {
-          "id": "vip-silver", "name": "VIP Silver", "price": 9.99, "currency": "USD", "type": "subscription", "badge": "MOST POPULAR",
+          "id": "vip-silver",
+          "name": "VIP Silver",
+          "price": 9.99,
+          "currency": "USD",
+          "type": "subscription",
+          "badge": "MOST POPULAR",
           "image": "../assets/img/cnc-vip-silver.png",
           "description": "<p>Most popular. Your monthly CnC membership:</p><ul><li>$125,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Silver VIP tag in chat and on the player list</li><li>VIP Silver role on our Discord</li><li>Ahead of Bronze and players without VIP in the queue</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
         },
         {
-          "id": "vip-gold", "name": "VIP Gold", "price": 19.99, "currency": "USD", "type": "subscription",
+          "id": "vip-gold",
+          "name": "VIP Gold",
+          "price": 19.99,
+          "currency": "USD",
+          "type": "subscription",
           "image": "../assets/img/cnc-vip-gold.png",
           "description": "<p>The full CnC experience:</p><ul><li>$300,000 bank money every month (claim it in game: F5 → My purchases)</li><li>Gold VIP tag in chat and on the player list</li><li>VIP Gold role on our Discord</li><li>First in the queue when the server is full</li></ul><p>Renews monthly. Cancel anytime from your Tebex payment history; perks stay until the paid month ends.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "bundles",
+      "name": "Bundles",
+      "packages": [
+        {
+          "id": "bundle-starter",
+          "name": "Starter Pack",
+          "price": 4.99,
+          "currency": "USD",
+          "type": "single",
+          "badge": "ONCE PER ACCOUNT",
+          "image": "../assets/img/store/bundle-starter.jpg",
+          "description": "<p>The best way to start in the city:</p><ul><li>VIP Bronze for 7 days</li><li>$25,000 bank money</li><li>600 CnCoins</li><li>A Mechanic Kit</li></ul><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "bundle-weekend",
+          "name": "Weekend Booster",
+          "price": 2.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/bundle-weekend.jpg",
+          "description": "<p>A weekend of fast progress:</p><ul><li>48 hours of Double XP</li><li>400 CnCoins</li></ul><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "bundle-kingpin",
+          "name": "Kingpin Bundle",
+          "price": 39.99,
+          "currency": "USD",
+          "type": "single",
+          "badge": "BEST VALUE",
+          "image": "../assets/img/store/bundle-kingpin.jpg",
+          "description": "<p>Everything at once:</p><ul><li>VIP Gold for 31 days</li><li>6,000 CnCoins</li><li>Personal stash, level 2</li><li>Motel locker, level 3</li><li>A bigger trunk</li></ul><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "cncoins",
+      "name": "CnCoins",
+      "packages": [
+        {
+          "id": "coins-0",
+          "name": "400 CnCoins",
+          "price": 1.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-0.jpg",
+          "description": "<p>400 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "coins-1",
+          "name": "1,000 CnCoins",
+          "price": 4.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-1.jpg",
+          "description": "<p>1,000 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "coins-2",
+          "name": "2,200 CnCoins",
+          "price": 9.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-2.jpg",
+          "description": "<p>2,200 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "coins-3",
+          "name": "4,800 CnCoins",
+          "price": 19.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-3.jpg",
+          "badge": "MOST POPULAR",
+          "description": "<p>4,800 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "coins-4",
+          "name": "12,500 CnCoins",
+          "price": 49.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-4.jpg",
+          "description": "<p>12,500 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
+        },
+        {
+          "id": "coins-5",
+          "name": "27,000 CnCoins",
+          "price": 99.99,
+          "currency": "USD",
+          "type": "single",
+          "image": "../assets/img/store/coins-5.jpg",
+          "badge": "BEST VALUE",
+          "description": "<p>27,000 CnCoins to spend in the city's store (F5): Double XP, storage upgrades, a custom plate, a name change and more.</p><p>Delivered to the city about a minute after you pay, even when you are offline. Claim in game with F5.</p>"
         }
       ]
     }
